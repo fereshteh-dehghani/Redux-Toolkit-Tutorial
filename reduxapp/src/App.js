@@ -1,24 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
+import 'react-bootstrap';
 
+import AddTutorial from "./component/add-tutorial.component";
+import Tutorial from "./component/tutorial.component";
+import TutorialList from "./component/tutorial-list.component";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <nav className='navbar navbar-expand navbar-dark bg-dark'>
+          <Link to={"/tutorial"} className='navbar-brand'>
+            Fereshteh
+          </Link>
+          <div className='navbar mr-auto'>
+            <li className='nav-item'>
+              <Link to={'/tutorials'} className='nav-link'>
+                Tutorials</Link>
+            </li>
+            <li className='nav-item'>
+              <Link to={'/tutorials'} className='nav-link'>
+                Tutorials</Link>
+            </li>
+          </div>
+          <div>Hi Fereshteh</div>
+        </nav>
+        <div className='container mt-3'>
+          <Routes>
+            <Route path="/" element={<TutorialList />} />
+            <Route path="tutorials" element={<TutorialList />} />
+            <Route path="/add" element={<AddTutorial />} />
+            <Route path="/tutorials/:id" element={<Tutorial />} />
+          </Routes>
+        </div>
+
+      </Router>
+
+    </>
   );
 }
 
